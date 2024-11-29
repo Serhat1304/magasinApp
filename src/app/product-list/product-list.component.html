@@ -1,0 +1,19 @@
+<div class="product-list">
+    <h2>Produits du magasin {{ storeId }}</h2>
+  
+    <div *ngIf="products.length === 0">
+      Aucun produit disponible pour ce magasin.
+    </div>
+  
+    <ul *ngIf="products.length > 0">
+      <li *ngFor="let product of products">
+        <strong>{{ product.name }}</strong> - {{ product.category }}
+        <br />
+        Prix : {{ product.price }} € - Quantité : {{ product.quantity }}
+  
+        <div *ngIf="canModify(product.storeId)">
+          <button (click)="editProduct(product)">Modifier</button>
+        </div>
+      </li>
+    </ul>
+  </div>

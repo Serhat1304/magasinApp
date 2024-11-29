@@ -1,0 +1,16 @@
+<header>
+  <nav>
+    <a routerLink="/home">Accueil</a>
+    <a routerLink="/login" *ngIf="!isAuthenticated()">Connexion</a>
+    <a
+      class="btn-create"
+      routerLink="/register"
+      *ngIf="isAdmin() && !isOnRegister"
+    >
+      Créer un utilisateur
+    </a>
+    <button class="btn-logout" *ngIf="isAuthenticated()" (click)="logout()">
+      Déconnexion
+    </button>
+  </nav>
+</header>
