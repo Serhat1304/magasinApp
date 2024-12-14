@@ -18,6 +18,7 @@ import {TableModule} from "primeng/table";
 import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
 import {PaginatorModule} from "primeng/paginator";
+import { EuroCurrencyDirective } from './shared/directive/euro-currency.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {PaginatorModule} from "primeng/paginator";
     FooterComponent,
     HomeComponent,
     RegisterComponent,
-    ProductListComponent
+    ProductListComponent,
+    EuroCurrencyDirective
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,9 @@ import {PaginatorModule} from "primeng/paginator";
     InputTextModule,
     DropdownModule,
     PaginatorModule
+  ],
+  exports: [
+    EuroCurrencyDirective
   ],
   providers: [],
   bootstrap: [AppComponent]
