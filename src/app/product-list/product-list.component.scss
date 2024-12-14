@@ -23,3 +23,18 @@
   overflow-x: auto;
   border-radius: 15px;
 }
+
+.action-buttons {
+  display:flex;
+  gap: 5px;
+}
+
+.button-with-border {
+  border: 2px solid #007ad9;
+  padding: 0.5rem;
+}
+
+.button-with-border-danger {
+  border: 2px solid #ff5252;
+  padding: 0.5rem;
+}
