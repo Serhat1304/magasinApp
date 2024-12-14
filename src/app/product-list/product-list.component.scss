@@ -1,0 +1,25 @@
+.titre-tableau{
+  text-align: center;
+  color: blue;
+}
+.product-list {
+  padding: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+.titre-tableau {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.container-tableau {
+  overflow-x: auto;
+  border-radius: 15px;
+}

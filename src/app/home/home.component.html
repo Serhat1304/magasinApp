@@ -1,13 +1,23 @@
 <div class="store-list">
-    <h2>Liste des magasins</h2>
-  
-    <div *ngIf="stores.length === 0">
-      Aucun magasin disponible.
-    </div>
-  
-    <ul *ngIf="stores.length > 0">
-      <li *ngFor="let store of stores">
-        <a [routerLink]="['/products', store.id]">{{ store.name }}</a>
-      </li>
-    </ul>
+  <h2>Liste des magasins</h2>
+
+  <!-- Message si aucun magasin n'est disponible -->
+  <div *ngIf="stores.length === 0" class="empty-message">
+    <p>Aucun magasin disponible.</p>
   </div>
+
+  <!-- Cards pour les magasins -->
+  <div *ngIf="stores.length > 0" class="card-container">
+    <div *ngFor="let store of stores" class="store-card">
+      <p-card header="{{ store.name }}" styleClass="p-mb-3">
+        <button
+          pButton
+          type="button"
+          label="Voir les produits"
+          icon="pi pi-arrow-right"
+          [routerLink]="['/products', store.id]">
+        </button>
+      </p-card>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,95 @@
 <div class="product-list">
-    <h2>Produits du magasin {{ storeId }}</h2>
-  
-    <div *ngIf="products.length === 0">
-      Aucun produit disponible pour ce magasin.
+  <h2 class="titre-tableau">Produits du magasin {{ storeId }}</h2>
+
+  <div class="card">
+    <div class="container-tableau">
+      <p-table
+        #dt2
+        [value]="products"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'category', 'price', 'quantity']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+      >
+        <!-- En-tête avec filtres -->
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:25%">Nom</th>
+            <th style="width:25%">Catégorie</th>
+            <th style="width:20%">Prix (€)</th>
+            <th style="width:20%">Quantité</th>
+            <th style="width:10%">Actions</th>
+          </tr>
+          <tr>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="name"
+                placeholder="Filtrer par nom"
+                ariaLabel="Filtrer le nom"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="category"
+                placeholder="Filtrer par catégorie"
+                ariaLabel="Filtrer la catégorie"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter
+                type="numeric"
+                matchMode="lte"
+                field="price"
+                placeholder="Prix maximum"
+                ariaLabel="Filtrer par prix"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter
+                type="numeric"
+                matchMode="lte"
+                field="quantity"
+                placeholder="Quantité maximum"
+                ariaLabel="Filtrer par quantité"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <!-- Pas de filtre pour les actions -->
+            </th>
+          </tr>
+        </ng-template>
+
+        <!-- Corps -->
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+              <button
+                *ngIf="canModify(product.storeId)"
+                pButton
+                type="button"
+                label="Modifier"
+                icon="pi pi-pencil"
+                (click)="editProduct(product)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <!-- Message pour tableau vide -->
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="5">Aucun produit trouvé.</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
-  
-    <ul *ngIf="products.length > 0">
-      <li *ngFor="let product of products">
-        <strong>{{ product.name }}</strong> - {{ product.category }}
-        <br />
-        Prix : {{ product.price }} € - Quantité : {{ product.quantity }}
-  
-        <div *ngIf="canModify(product.storeId)">
-          <button (click)="editProduct(product)">Modifier</button>
-        </div>
-      </li>
-    </ul>
   </div>
+</div>

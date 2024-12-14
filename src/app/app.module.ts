@@ -13,6 +13,11 @@ import { RegisterComponent } from './register/register.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule} from "primeng/button";
+import {CardModule} from "primeng/card";
+import {TableModule} from "primeng/table";
+import {InputTextModule} from "primeng/inputtext";
+import {DropdownModule} from "primeng/dropdown";
+import {PaginatorModule} from "primeng/paginator";
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import {ButtonModule} from "primeng/button";
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    CardModule,
+    TableModule,
+    InputTextModule,
+    DropdownModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
