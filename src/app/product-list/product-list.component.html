@@ -1,5 +1,5 @@
 <div class="product-list">
-  <h2 class="titre-tableau">Produits du magasin {{ storeId }}</h2>
+  <h2 class="titre-tableau">Produits du magasin "<strong>{{ nameStore }}</strong>"</h2>
 
   <div class="card">
     <div class="container-tableau">
@@ -79,15 +79,6 @@
                   class="p-button-rounded p-button-text p-button-info button-with-border"
                   (click)="editProduct(product)"
                   title="Modifier"
-                ></button>
-
-                <button
-                  pButton
-                  type="button"
-                  icon="pi pi-trash"
-                  class="p-button-rounded p-button-text p-button-danger button-with-border-danger"
-                  (click)="editProduct(product)"
-                  title="Supprimer"
                 ></button>
               </div>
             </td>

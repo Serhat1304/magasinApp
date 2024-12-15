@@ -1,0 +1,80 @@
+<div class="modif-article-container">
+  <h2>Modifier l'article</h2>
+
+  <!-- Formulaire réactif avec PrimeNG -->
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+
+    <!-- Champ Nom -->
+    <div class="form-group">
+      <label for="name">Nom de l'article</label>
+      <input
+        pInputText
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        [ngClass]="{'is-invalid': formControls.name.invalid && formControls.name.touched}"
+      />
+      <div *ngIf="formControls.name.invalid && formControls.name.touched" class="invalid-feedback">
+        <small *ngIf="formControls.name.errors?.required">Le nom est requis.</small>
+        <small *ngIf="formControls.name.errors?.minlength">Le nom doit contenir au moins 3 caractères.</small>
+      </div>
+    </div>
+
+    <!-- Champ Catégorie -->
+    <div class="form-group">
+      <label for="category">Catégorie</label>
+      <input
+        pInputText
+        type="text"
+        id="category"
+        formControlName="category"
+        class="form-control"
+        [ngClass]="{'is-invalid': formControls.category.invalid && formControls.category.touched}"
+      />
+      <div *ngIf="formControls.category.invalid && formControls.category.touched" class="invalid-feedback">
+        <small *ngIf="formControls.category.errors?.required">La catégorie est requise.</small>
+      </div>
+    </div>
+
+    <!-- Champ Prix -->
+    <div class="form-group">
+      <label for="price">Prix (€)</label>
+      <input
+        pInputText
+        type="number"
+        id="price"
+        formControlName="price"
+        class="form-control"
+        [ngClass]="{'is-invalid': formControls.price.invalid && formControls.price.touched}"
+      />
+      <div *ngIf="formControls.price.invalid && formControls.price.touched" class="invalid-feedback">
+        <small *ngIf="formControls.price.errors?.required">Le prix est requis.</small>
+        <small *ngIf="formControls.price.errors?.min">Le prix doit être supérieur ou égal à 0.</small>
+      </div>
+    </div>
+
+    <!-- Champ Quantité -->
+    <div class="form-group">
+      <label for="quantity">Quantité</label>
+      <input
+        pInputText
+        type="number"
+        id="quantity"
+        formControlName="quantity"
+        class="form-control"
+        [ngClass]="{'is-invalid': formControls.quantity.invalid && formControls.quantity.touched}"
+      />
+      <div *ngIf="formControls.quantity.invalid && formControls.quantity.touched" class="invalid-feedback">
+        <small *ngIf="formControls.quantity.errors?.required">La quantité est requise.</small>
+        <small *ngIf="formControls.quantity.errors?.min">La quantité doit être supérieure ou égale à 1.</small>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="form-group">
+      <button pButton type="submit" [disabled]="articleForm.invalid" label="Enregistrer" class="p-button-success"></button>
+      <button pButton type="button" (click)="articleForm.reset()" label="Annuler" class="p-button-secondary"></button>
+    </div>
+  </form>
+</div>

@@ -19,6 +19,11 @@ import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
 import {PaginatorModule} from "primeng/paginator";
 import { EuroCurrencyDirective } from './shared/directive/euro-currency.directive';
+import { ModifArticleComponent } from './modif-article/modif-article.component';
+import {ToastModule} from "primeng/toast";
+import {DialogModule} from "primeng/dialog";
+import {DialogService} from "primeng/dynamicdialog";
+import {ProductService} from "./services/product.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +34,8 @@ import { EuroCurrencyDirective } from './shared/directive/euro-currency.directiv
     HomeComponent,
     RegisterComponent,
     ProductListComponent,
-    EuroCurrencyDirective
+    EuroCurrencyDirective,
+    ModifArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -42,12 +48,14 @@ import { EuroCurrencyDirective } from './shared/directive/euro-currency.directiv
     TableModule,
     InputTextModule,
     DropdownModule,
-    PaginatorModule
+    PaginatorModule,
+    ToastModule,
+    DialogModule
   ],
   exports: [
     EuroCurrencyDirective
   ],
-  providers: [],
+  providers: [DialogService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
