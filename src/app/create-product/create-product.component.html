@@ -1,0 +1,36 @@
+<!-- HTML -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <!-- Name Field -->
+  <div>
+    <label for="name">Nom du produit</label>
+    <input id="name" formControlName="name" type="text" />
+  </div>
+
+  <!-- Category Selection -->
+  <div>
+    <label for="categoryId">Catégorie</label>
+    <p-dropdown
+      id="categoryId"
+      formControlName="categoryId"
+      [options]="categories"
+      optionLabel="name"
+      optionValue="id"
+      placeholder="Sélectionnez une catégorie"
+    ></p-dropdown>
+  </div>
+
+  <!-- Price Field -->
+  <div>
+    <label for="price">Prix (€)</label>
+    <input id="price" formControlName="price" type="number" step="0.01" />
+  </div>
+
+  <!-- Quantity Field -->
+  <div>
+    <label for="quantity">Quantité</label>
+    <input id="quantity" formControlName="quantity" type="number" />
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Créer le produit</button>
+</form>

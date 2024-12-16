@@ -6,11 +6,14 @@ import {StoreService} from "../services/store.service";
 import {Product} from "../models/product.model";
 import {DialogService} from "primeng/dynamicdialog";
 import {ModifArticleComponent} from "../modif-article/modif-article.component";
+import { Category } from '../models/category.model';
+import { CreateProductComponent } from '../create-product/create-product.component';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
+  providers: [DialogService] // Add DialogService to providers
 })
 export class ProductListComponent implements OnInit {
   storeId: string | null = null;
@@ -18,6 +21,8 @@ export class ProductListComponent implements OnInit {
   products: any[] = [];
   currentUser: any = null;
   selectedProduct: Product | null = null;
+  categories: Category[] = [];
+  selectedCategoryId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +33,7 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadCategories();
     this.storeId = this.route.snapshot.paramMap.get('storeId');
     this.currentUser = this.authService.getCurrentUser();
 
@@ -49,6 +55,18 @@ export class ProductListComponent implements OnInit {
         }
       });
     }
+    this.loadCategories();
+  }
+
+  loadCategories(): void {
+    this.productService.getCategories().subscribe({
+      next: (data) => {
+        this.categories = data;
+      },
+      error: (err) => {
+        console.error('Error fetching categories:', err);
+      }
+    });
   }
 
   canModify(productStoreId: string): boolean {
@@ -67,6 +85,23 @@ export class ProductListComponent implements OnInit {
     ref.onClose.subscribe((updatedProduct: Product) => {
       if (updatedProduct) {
         console.log('Produit modifié:', updatedProduct);
+      }
+    });
+  }
+
+  getCategoryName(categoryId: string): string {
+    const category = this.categories.find(cat => cat.id === categoryId);
+    return category ? category.name : 'Unknown';
+  }
+
+  openCreateProductDialog(): void {
+    const ref = this.dialogService.open(CreateProductComponent, {
+      header: 'Créer un nouveau produit',
+      width: '50%',
+    });
+    ref.onClose.subscribe((newProduct: Product) => {
+      if (newProduct) {
+        this.products.push(newProduct);
       }
     });
   }

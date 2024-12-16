@@ -24,6 +24,7 @@ import {ToastModule} from "primeng/toast";
 import {DialogModule} from "primeng/dialog";
 import {DialogService} from "primeng/dynamicdialog";
 import {ProductService} from "./services/product.service";
+import {CreateProductComponent} from "./create-product/create-product.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {ProductService} from "./services/product.service";
     RegisterComponent,
     ProductListComponent,
     EuroCurrencyDirective,
-    ModifArticleComponent
+    ModifArticleComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,

@@ -16,19 +16,21 @@
       </div>
     </div>
 
-    <!-- Champ Catégorie -->
+    <!-- Category Selection -->
     <div>
-      <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
-      <input
-        pInputText
-        type="text"
-        id="category"
-        formControlName="category"
-        [class.border-red-500]="formControls['category'].invalid && formControls['category'].touched"
-        class="block w-full rounded-md border border-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900 p-2"
-      />
-      <div *ngIf="formControls['category'].invalid && formControls['category'].touched" class="text-red-500 text-sm mt-1">
-        <small *ngIf="formControls['category'].errors?.['required']">La catégorie est requise.</small>
+      <label for="categoryId" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+      <p-dropdown
+        id="categoryId"
+        formControlName="categoryId"
+        [options]="categories"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Sélectionnez une catégorie"
+        [class.ng-invalid]="formControls['categoryId'].invalid && formControls['categoryId'].touched"
+        class="block w-full"
+      ></p-dropdown>
+      <div *ngIf="formControls['categoryId'].invalid && formControls['categoryId'].touched" class="text-red-500 text-sm mt-1">
+        <small *ngIf="formControls['categoryId'].errors?.['required']">La catégorie est requise.</small>
       </div>
     </div>
 

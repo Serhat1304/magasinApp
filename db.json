@@ -47,164 +47,171 @@
       "name": "Marché D"
     }
   ],
+  "categories": [
+    { "id": "1", "name": "Alimentaire" },
+    { "id": "2", "name": "Technologie" },
+    { "id": "3", "name": "Hygiène" },
+    { "id": "4", "name": "Beauté" },
+    { "id": "5", "name": "Non-Alimentaire" }
+  ],
   "products": [
     {
       "id": "1",
       "name": "Bouteille d'eau",
-      "category": "Alimentaire",
-      "storeId": 1,
+      "categoryId": "1",
+      "storeId": "1",
       "quantity": 100,
       "price": 0.5
     },
     {
       "id": "2",
       "name": "Savon liquide",
-      "category": "Hygiène",
-      "storeId": 2,
+      "categoryId": "3",
+      "storeId": "2",
       "quantity": 50,
       "price": 3.99
     },
     {
       "id": "3",
       "name": "Chocolat noir 70%",
-      "category": "Alimentaire",
-      "storeId": 1,
+      "categoryId": "1",
+      "storeId": "1",
       "quantity": 75,
       "price": 2.49
     },
     {
       "id": "4",
       "name": "Shampoing antipelliculaire",
-      "category": "Hygiène",
-      "storeId": 3,
+      "categoryId": "3",
+      "storeId": "3",
       "quantity": 30,
       "price": 5.99
     },
     {
       "id": "5",
       "name": "Café moulu",
-      "category": "Alimentaire",
-      "storeId": 2,
+      "categoryId": "1",
+      "storeId": "2",
       "quantity": 60,
       "price": 4.99
     },
     {
       "id": "6",
       "name": "Crème hydratante visage",
-      "category": "Beauté",
-      "storeId": 3,
+      "category": "4",
+      "storeId": "3",
       "quantity": 20,
       "price": 12.99
     },
     {
       "id": "7",
       "name": "Rouge à lèvres",
-      "category": "Beauté",
-      "storeId": 4,
+      "category": "4",
+      "storeId": "4",
       "quantity": 15,
       "price": 9.99
     },
     {
       "id": "8",
       "name": "Gel douche",
-      "category": "Hygiène",
-      "storeId": 4,
+      "categoryId": "3",
+      "storeId": "4",
       "quantity": 40,
       "price": 3.49
     },
     {
       "id": "9",
       "name": "Crème solaire SPF 50",
-      "category": "Beauté",
-      "storeId": 2,
+      "category": "4",
+      "storeId": "2",
       "quantity": 25,
       "price": 8.99
     },
     {
       "id": "10",
       "name": "Casque Bluetooth",
-      "category": "Technologie",
-      "storeId": 1,
+      "categoryId": "2",
+      "storeId": "1",
       "quantity": 10,
       "price": 49.99
     },
     {
       "id": "11",
       "name": "Clé USB 32GB",
-      "category": "Technologie",
-      "storeId": 3,
+      "categoryId": "2",
+      "storeId": "3",
       "quantity": 35,
       "price": 7.99
     },
     {
       "id": "12",
       "name": "Biscottes complètes",
-      "category": "Alimentaire",
-      "storeId": 1,
+      "categoryId": "1",
+      "storeId": "1",
       "quantity": 50,
       "price": 1.99
     },
     {
       "id": "13",
       "name": "Huile d'olive vierge extra",
-      "category": "Alimentaire",
-      "storeId": 4,
+      "category": "1",
+      "storeId": "4",
       "quantity": 20,
       "price": 6.49
     },
     {
       "id": "14",
       "name": "Dentifrice mentholé",
-      "category": "Hygiène",
-      "storeId": 3,
+      "categoryId": "3",
+      "storeId": "3",
       "quantity": 40,
       "price": 2.99
     },
     {
       "id": "15",
       "name": "Mascara waterproof",
-      "category": "Beauté",
-      "storeId": 2,
+      "category": "4",
+      "storeId": "2",
       "quantity": 30,
       "price": 11.99
     },
     {
       "id": "16",
       "name": "Chargeur rapide USB-C",
-      "category": "Technologie",
-      "storeId": 1,
+      "categoryId": "2",
+      "storeId": "1",
       "quantity": 15,
       "price": 14.99
     },
     {
       "id": "17",
       "name": "Pâtes complètes",
-      "category": "Alimentaire",
-      "storeId": 4,
+      "categoryId": "1",
+      "storeId": "4",
       "quantity": 100,
       "price": 1.49
     },
     {
       "id": "18",
       "name": "Papier essuie-tout",
-      "category": "Non-Alimentaire",
-      "storeId": 2,
+      "category": "4",
+      "storeId": "2",
       "quantity": 80,
       "price": 2.49
     },
     {
       "id": "19",
       "name": "Brosse à dents électrique",
-      "category": "Hygiène",
-      "storeId": 3,
+      "categoryId": "3",
+      "storeId": "3",
       "quantity": 10,
       "price": 19.99
     },
     {
       "id": "20",
       "name": "Crayon pour les yeux",
-      "category": "Beauté",
-      "storeId": 4,
+      "category": "4",
+      "storeId": "4",
       "quantity": 25,
       "price": 6.99
     }
