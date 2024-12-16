@@ -1,14 +1,19 @@
-<!-- HTML -->
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <!-- Name Field -->
-  <div>
-    <label for="name">Nom du produit</label>
-    <input id="name" formControlName="name" type="text" />
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="space-y-4 max-w-lg mx-auto p-6 bg-white">
+
+  <div class="flex flex-col">
+    <label for="name" class="text-gray-700 font-semibold mb-2">Nom du produit</label>
+    <input
+      id="name"
+      formControlName="name"
+      type="text"
+      class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      placeholder="Entrez le nom du produit"
+    />
   </div>
 
-  <!-- Category Selection -->
-  <div>
-    <label for="categoryId">Catégorie</label>
+  <!-- Champ Catégorie -->
+  <div class="flex flex-col">
+    <label for="categoryId" class="text-gray-700 font-semibold mb-2">Catégorie</label>
     <p-dropdown
       id="categoryId"
       formControlName="categoryId"
@@ -16,21 +21,41 @@
       optionLabel="name"
       optionValue="id"
       placeholder="Sélectionnez une catégorie"
+      class="w-fit border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
     ></p-dropdown>
   </div>
 
-  <!-- Price Field -->
-  <div>
-    <label for="price">Prix (€)</label>
-    <input id="price" formControlName="price" type="number" step="0.01" />
+  <!-- Champ Prix -->
+  <div class="flex flex-col">
+    <label for="price" class="text-gray-700 font-semibold mb-2">Prix (€)</label>
+    <input
+      id="price"
+      formControlName="price"
+      type="number"
+      step="0.01"
+      class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      placeholder="Entrez le prix du produit"
+    />
   </div>
 
-  <!-- Quantity Field -->
-  <div>
-    <label for="quantity">Quantité</label>
-    <input id="quantity" formControlName="quantity" type="number" />
+  <div class="flex flex-col">
+    <label for="quantity" class="text-gray-700 font-semibold mb-2">Quantité</label>
+    <input
+      id="quantity"
+      formControlName="quantity"
+      type="number"
+      class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      placeholder="Entrez la quantité"
+    />
   </div>
 
-  <!-- Submit Button -->
-  <button type="submit">Créer le produit</button>
+  <div>
+    <button
+      type="submit"
+      class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+    >
+      Créer le produit
+    </button>
+  </div>
+
 </form>
