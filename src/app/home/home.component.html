@@ -1,21 +1,24 @@
-<div class="store-list">
-  <h2>Liste des magasins</h2>
+<div class="store-list text-center my-6">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Liste des magasins</h2>
 
-  <div *ngIf="stores.length === 0" class="empty-message">
+  <div *ngIf="stores.length === 0" class="empty-message text-gray-500 text-lg">
     <p>Aucun magasin disponible.</p>
   </div>
 
-  <div *ngIf="stores.length > 0" class="card-container">
-    <div *ngFor="let store of stores" class="store-card">
-      <p-card header="{{ store.name }}" styleClass="p-mb-3">
+  <div *ngIf="stores.length > 0" class="card-container flex flex-wrap gap-6 justify-center">
+    <div *ngFor="let store of stores" class="store-card flex-1 max-w-xs ">
+      <div class="flex flex-col justify-between bg-white shadow-lg rounded-lg p-4 min-h-[150px]">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">{{ store.name }}</h3>
         <button
           pButton
           type="button"
           label="Voir les produits"
           icon="pi pi-arrow-right"
-          [routerLink]="['/products', store.id]">
+          [routerLink]="['/products', store.id]"
+          class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+        >
         </button>
-      </p-card>
+      </div>
     </div>
   </div>
 </div>
