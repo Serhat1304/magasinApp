@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product.model';
 import { Category } from '../models/category.model';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-create-product',
@@ -13,11 +13,13 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 export class CreateProductComponent implements OnInit {
   productForm: FormGroup;
   categories: Category[] = [];
+  storeId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    public dialogRef: DynamicDialogRef
+    public dialogRef: DynamicDialogRef,
+    public config: DynamicDialogConfig
   ) {
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,6 +31,8 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
+    this.storeId = this.config.data?.storeId || null;
+    console.log(this.storeId);
   }
 
   loadCategories(): void {
@@ -44,17 +48,22 @@ export class CreateProductComponent implements OnInit {
 
   onSubmit(): void {
     if (this.productForm.valid) {
-      const newProduct: Product = this.productForm.value;
-      this.productService.addProduct(newProduct).subscribe({
-        next: (product) => {
-          this.dialogRef.close(product);
+      const product: Product = {
+        ...this.productForm.value,
+        storeId: this.storeId
+      };
+
+      this.productService.addProduct(product).subscribe({
+        next: (createdProduct) => {
+          this.dialogRef.close(createdProduct);
         },
         error: (err) => {
-          console.error('Error creating product:', err);
+          console.error('Erreur lors de la création du produit:', err);
         },
       });
     } else {
-      console.log('Form is invalid');
+      console.log('Le formulaire est invalide.');
     }
   }
+
 }

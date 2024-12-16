@@ -1,6 +1,5 @@
 <div class="modif-article-container max-w-lg mx-auto bg-white">
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="space-y-6">
-    <!-- Champ Nom -->
     <div>
       <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom de l'article</label>
       <input
@@ -16,7 +15,6 @@
       </div>
     </div>
 
-    <!-- Category Selection -->
     <div>
       <label for="categoryId" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
       <p-dropdown
@@ -35,9 +33,7 @@
     </div>
 
 
-    <!-- Prix et Quantité alignés -->
     <div class="flex space-x-4">
-      <!-- Champ Prix -->
       <div class="flex-1">
         <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Prix (€)</label>
         <input
@@ -53,7 +49,6 @@
         </div>
       </div>
 
-      <!-- Champ Quantité -->
       <div class="flex-1">
         <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
         <input
@@ -70,7 +65,6 @@
       </div>
     </div>
 
-    <!-- Boutons -->
     <div class="flex justify-end space-x-4">
       <button
         pButton

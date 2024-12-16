@@ -3,7 +3,7 @@
     Produits du magasin "<strong>{{ nameStore }}</strong>"
   </h2>
 
-  <div class="flex flex-row-reverse">
+  <div class="flex flex-row-reverse" *ngIf="canModify(storeId)">
   <button
     pButton
     type="button"
@@ -80,7 +80,7 @@
             <td class="py-2 px-4" [appEuroCurrency]="product.price"></td>
             <td class="py-2 px-4">{{ product.quantity }}</td>
             <td class="py-2 px-4">
-              <div class="action-buttons flex gap-2">
+              <div class="action-buttons flex gap-2" *ngIf="canModify(storeId)">
                 <button
                   pButton
                   type="button"

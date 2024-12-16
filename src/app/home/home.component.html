@@ -1,12 +1,10 @@
 <div class="store-list">
   <h2>Liste des magasins</h2>
 
-  <!-- Message si aucun magasin n'est disponible -->
   <div *ngIf="stores.length === 0" class="empty-message">
     <p>Aucun magasin disponible.</p>
   </div>
 
-  <!-- Cards pour les magasins -->
   <div *ngIf="stores.length > 0" class="card-container">
     <div *ngFor="let store of stores" class="store-card">
       <p-card header="{{ store.name }}" styleClass="p-mb-3">

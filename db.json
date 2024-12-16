@@ -48,11 +48,26 @@
     }
   ],
   "categories": [
-    { "id": "1", "name": "Alimentaire" },
-    { "id": "2", "name": "Technologie" },
-    { "id": "3", "name": "Hygiène" },
-    { "id": "4", "name": "Beauté" },
-    { "id": "5", "name": "Non-Alimentaire" }
+    {
+      "id": "1",
+      "name": "Alimentaire"
+    },
+    {
+      "id": "2",
+      "name": "Technologie"
+    },
+    {
+      "id": "3",
+      "name": "Hygiène"
+    },
+    {
+      "id": "4",
+      "name": "Beauté"
+    },
+    {
+      "id": "5",
+      "name": "Non-Alimentaire"
+    }
   ],
   "products": [
     {
@@ -214,6 +229,14 @@
       "storeId": "4",
       "quantity": 25,
       "price": 6.99
+    },
+    {
+      "id": "696d",
+      "name": "test id v2",
+      "categoryId": "4",
+      "price": 3,
+      "quantity": 210,
+      "storeId": "1"
     }
   ]
 }

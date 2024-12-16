@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  canModify(productStoreId: string): boolean {
+  canModify(productStoreId: string | null): boolean {
     return (
       this.currentUser?.role === 'admin' || this.currentUser?.storeId === productStoreId
     );
@@ -98,6 +98,7 @@ export class ProductListComponent implements OnInit {
     const ref = this.dialogService.open(CreateProductComponent, {
       header: 'Créer un nouveau produit',
       width: '50%',
+      data: { storeId: this.storeId },
     });
     ref.onClose.subscribe((newProduct: Product) => {
       if (newProduct) {
