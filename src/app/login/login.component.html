@@ -1,26 +1,55 @@
-<div class="login-form">
-    <h2>Connexion</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="email">Email :</label>
-        <input id="email" formControlName="email" type="email" placeholder="Entrez votre email" />
-        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-          <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis.</small>
-          <small *ngIf="loginForm.get('email')?.errors?.['email']">L'email n'est pas valide.</small>
-        </div>
+<div class="login-form max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">
+  <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Connexion</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email" class="block text-gray-700 font-medium mb-2">Email :</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="Entrez votre email"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        class="text-sm text-red-500 mt-1"
+      >
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis.</small>
+        <small *ngIf="loginForm.get('email')?.errors?.['email']">L'email n'est pas valide.</small>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="password">Mot de passe :</label>
-        <input id="password" formControlName="password" type="password" placeholder="Entrez votre mot de passe" />
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-          <small *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</small>
-          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
-            Le mot de passe doit contenir au moins 6 caractères.
-          </small>
-        </div>
+    <!-- Mot de passe -->
+    <div class="form-group">
+      <label for="password" class="block text-gray-700 font-medium mb-2">Mot de passe :</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        placeholder="Entrez votre mot de passe"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        class="text-sm text-red-500 mt-1"
+      >
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</small>
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+          Le mot de passe doit contenir au moins 6 caractères.
+        </small>
       </div>
+    </div>
 
-      <p-button type="submit" [disabled]="loginForm.invalid" class="button-login">Se connecter</p-button>
-    </form>
-  </div>
+    <!-- Bouton -->
+    <div>
+      <p-button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg flex items-center justify-center gap-2"
+      >
+        Se connecter
+      </p-button>
+    </div>
+  </form>
+</div>

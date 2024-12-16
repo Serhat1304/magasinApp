@@ -1,0 +1,21 @@
+.store-list {
+  text-align: center;
+  margin: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.store-card {
+  flex: 1 1 calc(33.333% - 20px); /* 3 cards par ligne, ajustez selon vos besoins */
+  max-width: 300px; /* Largeur maximale pour chaque card */
+}
+
+.empty-message {
+  font-size: 1.2em;
+  color: #888;
+}
