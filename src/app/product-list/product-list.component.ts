@@ -8,6 +8,7 @@ import {DialogService} from "primeng/dynamicdialog";
 import {ModifArticleComponent} from "../modif-article/modif-article.component";
 import { Category } from '../models/category.model';
 import { CreateProductComponent } from '../create-product/create-product.component';
+import {PrimeNGConfig} from "primeng/api";
 
 @Component({
   selector: 'app-product-list',
@@ -29,10 +30,40 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private authService: AuthService,
     private storeService: StoreService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private primengConfig: PrimeNGConfig
   ) {}
 
   ngOnInit(): void {
+    this.primengConfig.setTranslation({
+      accept: 'Oui',
+      reject: 'Non',
+      choose: 'Sélectionner',
+      upload: 'Télécharger',
+      cancel: 'Annuler',
+      startsWith: 'Commence par',
+      contains: 'Contient',
+      notContains: 'Ne contient pas',
+      endsWith: 'Se termine par',
+      equals: 'Égal à',
+      notEquals: 'Différent de',
+      noFilter: 'Aucun filtre',
+      lt: 'Moins que',
+      lte: 'Inférieur ou égal à',
+      gt: 'Plus grand que',
+      gte: 'Supérieur ou égal à',
+      dateIs: 'Date égale à',
+      dateIsNot: 'Date différente de',
+      dateBefore: 'Date avant',
+      dateAfter: 'Date après',
+      clear: 'Effacer',
+      apply: 'Appliquer',
+      matchAll: 'Correspond à tous',
+      matchAny: 'Correspond à un',
+      addRule: 'Ajouter une règle',
+      removeRule: 'Supprimer une règle',
+    });
+
     this.loadCategories();
     this.storeId = this.route.snapshot.paramMap.get('storeId');
     this.currentUser = this.authService.getCurrentUser();
