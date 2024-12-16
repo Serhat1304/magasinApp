@@ -27,12 +27,13 @@
         optionValue="id"
         placeholder="Sélectionnez une catégorie"
         [class.ng-invalid]="formControls['categoryId'].invalid && formControls['categoryId'].touched"
-        class="block w-full"
+        class="block w-fit rounded-md border border-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900 p-2"
       ></p-dropdown>
       <div *ngIf="formControls['categoryId'].invalid && formControls['categoryId'].touched" class="text-red-500 text-sm mt-1">
         <small *ngIf="formControls['categoryId'].errors?.['required']">La catégorie est requise.</small>
       </div>
     </div>
+
 
     <!-- Prix et Quantité alignés -->
     <div class="flex space-x-4">

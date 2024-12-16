@@ -1,5 +1,7 @@
-<div class="product-list">
-  <h2 class="titre-tableau">Produits du magasin "<strong>{{ nameStore }}</strong>"</h2>
+<div class="product-list p-4">
+  <h2 class="titre-tableau text-center text-blue-600 text-xl font-bold mb-4">
+    Produits du magasin "<strong>{{ nameStore }}</strong>"
+  </h2>
 
   <button
     pButton
@@ -7,10 +9,11 @@
     label="Ajouter un produit"
     icon="pi pi-plus"
     (click)="openCreateProductDialog()"
+    class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 "
   ></button>
 
-  <div class="card">
-    <div class="container-tableau min-h-[200px]">
+  <div class="card bg-white rounded-lg shadow-lg">
+    <div class="container-tableau overflow-x-auto rounded-lg">
       <p-table
         #dt2
         [value]="products"
@@ -23,51 +26,45 @@
       >
         <!-- En-tête avec filtres -->
         <ng-template pTemplate="header">
-          <tr>
-            <th style="width:30%">Nom</th>
-            <th style="width:30%">Catégorie</th>
-            <th style="width:15%">Prix (€)</th>
-            <th style="width:15%">Quantité</th>
-            <th style="width:10%">Actions</th>
+          <tr class="text-left">
+            <th style="width:30%" class="py-2 px-4">Nom</th>
+            <th style="width:20%" class="py-2 px-4">Catégorie</th>
+            <th style="width:20%" class="py-2 px-4">Prix (€)</th>
+            <th style="width:20%" class="py-2 px-4">Quantité</th>
+            <th style="width:10%" class="py-2 px-4">Actions</th>
           </tr>
           <tr>
-            <th>
+            <th class="py-2 px-4">
               <p-columnFilter
                 type="text"
                 field="name"
-                placeholder="Filtrer par nom"
                 ariaLabel="Filtrer le nom"
+                class="block w-full focus:ring-blue-500 focus:border-blue-500"
               ></p-columnFilter>
             </th>
-            <th>
-              <p-dropdown
-                [options]="categories"
-                optionLabel="name"
-                placeholder="Filtrer par catégorie"
-                [(ngModel)]="selectedCategoryId"
-                (onChange)="dt2.filter(selectedCategoryId, 'categoryId', 'equals')"
-                class="z-1000"
-              ></p-dropdown>
+            <th class="py-2 px-4">
+
             </th>
-            <th>
+            <th class="py-2 px-4">
               <p-columnFilter
                 type="numeric"
                 matchMode="lte"
                 field="price"
-                placeholder="Prix maximum"
                 ariaLabel="Filtrer par prix"
+                class="block w-full rounded-md focus:ring-blue-500 focus:border-blue-500"
               ></p-columnFilter>
             </th>
-            <th>
+            <th class="py-2 px-4">
               <p-columnFilter
                 type="numeric"
                 matchMode="lte"
                 field="quantity"
-                placeholder="Quantité maximum"
                 ariaLabel="Filtrer par quantité"
+                class="block w-full rounded-md focus:ring-blue-500 focus:border-blue-500"
               ></p-columnFilter>
             </th>
-            <th>
+
+            <th class="py-2 px-4">
               <!-- Pas de filtre pour les actions -->
             </th>
           </tr>
@@ -76,12 +73,12 @@
         <!-- Corps -->
         <ng-template pTemplate="body" let-product>
           <tr>
-            <td>{{ product.name }}</td>
-            <td>{{ getCategoryName(product.categoryId) }}</td>
-            <td [appEuroCurrency]=" product.price " ></td>
-            <td>{{ product.quantity }}</td>
-            <td>
-              <div class="action-buttons">
+            <td class="py-2 px-4">{{ product.name }}</td>
+            <td class="py-2 px-4">{{ getCategoryName(product.categoryId) }}</td>
+            <td class="py-2 px-4" [appEuroCurrency]="product.price"></td>
+            <td class="py-2 px-4">{{ product.quantity }}</td>
+            <td class="py-2 px-4">
+              <div class="action-buttons flex gap-2">
                 <button
                   pButton
                   type="button"
@@ -98,7 +95,7 @@
         <!-- Message pour tableau vide -->
         <ng-template pTemplate="emptymessage">
           <tr class="min-h-[200px]">
-            <td colspan="5">Aucun produit trouvé.</td>
+            <td colspan="5" class="text-center py-4">Aucun produit trouvé.</td>
           </tr>
         </ng-template>
       </p-table>
