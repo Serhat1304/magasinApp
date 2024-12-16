@@ -11,6 +11,9 @@ import { UserService } from '../services/user.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   stores: any[] = [];
+  get isAdmin(): boolean {
+    return this.registerForm.get('role')?.value === 'admin';
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -20,7 +23,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      storeId: ['', Validators.required],
+      storeId: [''],
       role: ['user', Validators.required]
     });
   }
