@@ -8,3 +8,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input{
+  height: 35px;
+}
+
+.p-inputnumber-button-group{
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+  border-radius: 0 6px 6px 0;
+  height: 35px;
+}

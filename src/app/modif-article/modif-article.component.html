@@ -1,0 +1,87 @@
+<div class="modif-article-container max-w-lg mx-auto bg-white">
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom de l'article</label>
+      <input
+        pInputText
+        type="text"
+        id="name"
+        formControlName="name"
+        [class.border-red-500]="formControls['name'].invalid && formControls['name'].touched"
+        class="block w-full rounded-md border border-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900 p-2"
+      />
+      <div *ngIf="formControls['name'].invalid && formControls['name'].touched" class="text-red-500 text-sm mt-1">
+        <small *ngIf="formControls['name'].errors?.['required']">Le nom est requis.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="categoryId" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+      <p-dropdown
+        id="categoryId"
+        formControlName="categoryId"
+        [options]="categories"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Sélectionnez une catégorie"
+        [class.ng-invalid]="formControls['categoryId'].invalid && formControls['categoryId'].touched"
+        class="block w-fit rounded-md border border-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900 p-2"
+      ></p-dropdown>
+      <div *ngIf="formControls['categoryId'].invalid && formControls['categoryId'].touched" class="text-red-500 text-sm mt-1">
+        <small *ngIf="formControls['categoryId'].errors?.['required']">La catégorie est requise.</small>
+      </div>
+    </div>
+
+
+    <div class="flex space-x-4">
+      <div class="flex-1">
+        <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Prix (€)</label>
+        <input
+          pInputText
+          type="number"
+          id="price"
+          formControlName="price"
+          [class.border-red-500]="formControls['price'].invalid && formControls['price'].touched"
+          class="block w-full rounded-md border border-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900 p-2"
+        />
+        <div *ngIf="formControls['price'].invalid && formControls['price'].touched" class="text-red-500 text-sm mt-1">
+          <small *ngIf="formControls['price'].errors?.['required']">Le prix est requis.</small>
+        </div>
+      </div>
+
+      <div class="flex-1">
+        <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+        <input
+          pInputText
+          type="number"
+          id="quantity"
+          formControlName="quantity"
+          [class.border-red-500]="formControls['quantity'].invalid && formControls['quantity'].touched"
+          class="block w-full rounded-md border border-gray-400 focus:ring-blue-500 focus:border-blue-500 text-gray-900 p-2"
+        />
+        <div *ngIf="formControls['quantity'].invalid && formControls['quantity'].touched" class="text-red-500 text-sm mt-1">
+          <small *ngIf="formControls['quantity'].errors?.['required']">La quantité est requise.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end space-x-4">
+      <button
+        pButton
+        type="button"
+        (click)="articleForm.reset()"
+        class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+      >
+        Annuler
+      </button>
+      <button
+        pButton
+        type="submit"
+        [disabled]="articleForm.invalid"
+        class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 disabled:opacity-50"
+      >
+        Enregistrer
+      </button>
+    </div>
+  </form>
+</div>
