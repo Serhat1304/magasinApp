@@ -1,16 +1,39 @@
-<header>
-  <nav>
-    <a routerLink="/home">Accueil</a>
-    <a routerLink="/login" *ngIf="!isAuthenticated()">Connexion</a>
-    <a
-      class="btn-create"
-      routerLink="/register"
-      *ngIf="isAdmin() && !isOnRegister"
-    >
-      Créer un utilisateur
-    </a>
-    <button class="btn-logout" *ngIf="isAuthenticated()" (click)="logout()">
-      Déconnexion
-    </button>
+<header class="bg-blue-500 text-white shadow-md">
+  <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Lien vers Accueil -->
+    <div>
+      <a
+        routerLink="/home"
+        class="text-lg font-semibold hover:text-blue-200 transition-colors">
+        Accueil
+      </a>
+    </div>
+
+    <!-- Liens de navigation -->
+    <div class="flex space-x-4 items-center">
+      <!-- Connexion -->
+      <a
+        routerLink="/login"
+        *ngIf="!isAuthenticated()"
+        class="hover:text-blue-200 transition-colors">
+        Connexion
+      </a>
+
+      <!-- Créer un utilisateur -->
+      <a
+        class="btn-create bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
+        routerLink="/register"
+        *ngIf="isAdmin() && !isOnRegister">
+        Créer un utilisateur
+      </a>
+
+      <!-- Déconnexion -->
+      <button
+        class="btn-logout bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
+        *ngIf="isAuthenticated()"
+        (click)="logout()">
+        Déconnexion
+      </button>
+    </div>
   </nav>
 </header>

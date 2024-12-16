@@ -2,19 +2,18 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #5b6876;
     padding: 15px;
-  
+
     a {
       color: white;
       text-decoration: none;
       margin-right: 15px;
-  
+
       &:hover {
         text-decoration: underline;
       }
     }
-  
+
     .btn-logout {
       background-color: #ff4d4d;
       color: white;
@@ -24,11 +23,11 @@ nav {
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s;
-  
+
       &:hover {
         background-color: #e60000;
       }
-  
+
       &:active {
         background-color: #cc0000;
       }
@@ -44,11 +43,11 @@ nav {
       cursor: pointer;
       transition: background-color 0.3s;
       margin-left: auto;
-  
+
       &:hover {
         background-color: #0068e6;
       }
-  
+
       &:active {
         background-color: #4da6ff;
       }
