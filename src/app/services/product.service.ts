@@ -13,4 +13,8 @@ export class ProductService {
   getProductsByStoreId(storeId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/products?storeId=${storeId}`);
   }
+
+  updateProduct(id: number, productData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, productData);
+  }
 }
