@@ -98,7 +98,7 @@
     {
       "id": "6",
       "name": "Crème hydratante visage",
-      "category": "4",
+      "categoryId": "4",
       "storeId": "3",
       "quantity": 20,
       "price": 12.99
@@ -106,7 +106,7 @@
     {
       "id": "7",
       "name": "Rouge à lèvres",
-      "category": "4",
+      "categoryId": "4",
       "storeId": "4",
       "quantity": 15,
       "price": 9.99
@@ -122,7 +122,7 @@
     {
       "id": "9",
       "name": "Crème solaire SPF 50",
-      "category": "4",
+      "categoryId": "4",
       "storeId": "2",
       "quantity": 25,
       "price": 8.99
@@ -154,7 +154,7 @@
     {
       "id": "13",
       "name": "Huile d'olive vierge extra",
-      "category": "1",
+      "categoryId": "1",
       "storeId": "4",
       "quantity": 20,
       "price": 6.49
@@ -170,7 +170,7 @@
     {
       "id": "15",
       "name": "Mascara waterproof",
-      "category": "4",
+      "categoryId": "4",
       "storeId": "2",
       "quantity": 30,
       "price": 11.99
@@ -194,7 +194,7 @@
     {
       "id": "18",
       "name": "Papier essuie-tout",
-      "category": "4",
+      "categoryId": "4",
       "storeId": "2",
       "quantity": 80,
       "price": 2.49
@@ -210,7 +210,7 @@
     {
       "id": "20",
       "name": "Crayon pour les yeux",
-      "category": "4",
+      "categoryId": "4",
       "storeId": "4",
       "quantity": 25,
       "price": 6.99
