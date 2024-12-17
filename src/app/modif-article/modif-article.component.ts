@@ -50,7 +50,8 @@ export class ModifArticleComponent implements OnInit {
     if (this.articleForm.valid) {
       const updatedProduct: Product = {
         ...this.product,
-        ...this.articleForm.value
+        ...this.articleForm.value,
+        modif: new Date()
       };
       this.productService.updateProduct(updatedProduct.id, updatedProduct).subscribe({
         next: (updateProduct: Product) => {
