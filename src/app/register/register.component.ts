@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +11,6 @@ import { UserService } from '../services/user.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   stores: any[] = [];
-  get isAdmin(): boolean {
-    return this.registerForm.get('role')?.value === 'admin';
-  }
 
   constructor(
     private fb: FormBuilder,
@@ -22,10 +19,14 @@ export class RegisterComponent implements OnInit {
   ) {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6), this.passwordValidator()]],
       storeId: [''],
       role: ['user', Validators.required]
     });
+  }
+
+  get isAdmin(): boolean {
+    return this.registerForm.get('role')?.value === 'admin';
   }
 
   ngOnInit(): void {
@@ -47,5 +48,21 @@ export class RegisterComponent implements OnInit {
         }
       });
     }
+  }
+
+  passwordValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const password = control.value;
+      const hasUpperCase = /[A-Z]/.test(password); // Vérifie la présence d'une majuscule
+      const hasLowerCase = /[a-z]/.test(password); // Vérifie la présence d'une minuscule
+      const hasNumbers = /\d/.test(password); // Vérifie la présence d'un chiffre
+      const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password); // Vérifie la présence de caractères spéciaux
+
+      if (hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChars) {
+        return null;
+      }
+
+      return {weakPassword: true};
+    };
   }
 }
