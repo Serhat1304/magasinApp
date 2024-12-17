@@ -70,6 +70,8 @@ export class TableProductComponent implements OnInit {
     });
     ref.onClose.subscribe((updatedProduct: Product) => {
       if (updatedProduct) {
+        const index = this.product.findIndex(product => product.id === updatedProduct.id);
+        this.product.splice(index, 1);
         this.product.push(updatedProduct);
       }
     });
