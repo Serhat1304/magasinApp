@@ -117,7 +117,7 @@ export class ProductListComponent implements OnInit {
     });
     ref.onClose.subscribe((updatedProduct: Product) => {
       if (updatedProduct) {
-        console.log('Produit modifié:', updatedProduct);
+        this.products.push(updatedProduct);
       }
     });
   }
