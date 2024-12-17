@@ -3,7 +3,15 @@
     Produits du magasin "<strong>{{ nameStore }}</strong>"
   </h2>
 
-  <div class="flex flex-row-reverse mb-5" *ngIf="canModify(storeId)">
+  <div class="flex justify-between mb-5" *ngIf="canModify(storeId)">
+    <button
+      pButton
+      type="button"
+      label="Changer de magasin"
+      icon="pi pi-map-marker"
+      (click)="openChangeMagasin()"
+      class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 "
+    ></button>
   <button
     pButton
     type="button"
@@ -12,7 +20,6 @@
     (click)="openCreateProductDialog()"
     class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 "
   ></button>
-
   </div>
     <app-table-product
      [product]="products"

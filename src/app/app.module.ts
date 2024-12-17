@@ -22,7 +22,7 @@ import { EuroCurrencyDirective } from './shared/directive/euro-currency.directiv
 import { ModifArticleComponent } from './modif-article/modif-article.component';
 import {ToastModule} from "primeng/toast";
 import {DialogModule} from "primeng/dialog";
-import {DialogService} from "primeng/dynamicdialog";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ProductService} from "./services/product.service";
 import {CreateProductComponent} from "./create-product/create-product.component";
 import { TableProductComponent } from './table-product/table-product.component';
@@ -63,7 +63,7 @@ import { ListMagasinsComponent } from './list-magasins/list-magasins.component';
   exports: [
     EuroCurrencyDirective
   ],
-  providers: [DialogService, ProductService],
+  providers: [DialogService, ProductService, DynamicDialogRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
