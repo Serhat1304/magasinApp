@@ -22,9 +22,7 @@ export class ProductListComponent implements OnInit {
   nameStore: String | undefined;
   products: any[] = [];
   currentUser: any = null;
-  selectedProduct: Product | null = null;
   categories: Category[] = [];
-  selectedCategoryId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -106,25 +104,6 @@ export class ProductListComponent implements OnInit {
     return (
       this.currentUser?.role === 'admin' || this.currentUser?.storeId === productStoreId
     );
-  }
-
-  editProduct(product: any): void {
-    this.selectedProduct = product;
-    const ref = this.dialogService.open(ModifArticleComponent, {
-      data: { product },
-      header: 'Modifier l\'article',
-      width: '50%',
-    });
-    ref.onClose.subscribe((updatedProduct: Product) => {
-      if (updatedProduct) {
-        this.products.push(updatedProduct);
-      }
-    });
-  }
-
-  getCategoryName(categoryId: string): string {
-    const category = this.categories.find(cat => cat.id === categoryId);
-    return category ? category.name : 'Unknown';
   }
 
   openCreateProductDialog(): void {

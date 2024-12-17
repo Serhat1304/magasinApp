@@ -25,6 +25,7 @@ import {DialogModule} from "primeng/dialog";
 import {DialogService} from "primeng/dynamicdialog";
 import {ProductService} from "./services/product.service";
 import {CreateProductComponent} from "./create-product/create-product.component";
+import { TableProductComponent } from './table-product/table-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {CreateProductComponent} from "./create-product/create-product.component"
     ProductListComponent,
     EuroCurrencyDirective,
     ModifArticleComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    TableProductComponent
   ],
   imports: [
     BrowserModule,
