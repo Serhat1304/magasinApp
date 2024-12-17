@@ -27,6 +27,7 @@ import {ProductService} from "./services/product.service";
 import {CreateProductComponent} from "./create-product/create-product.component";
 import { TableProductComponent } from './table-product/table-product.component';
 import {NgOptimizedImage} from "@angular/common";
+import { ListMagasinsComponent } from './list-magasins/list-magasins.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {NgOptimizedImage} from "@angular/common";
     EuroCurrencyDirective,
     ModifArticleComponent,
     CreateProductComponent,
-    TableProductComponent
+    TableProductComponent,
+    ListMagasinsComponent
   ],
   imports: [
     BrowserModule,
