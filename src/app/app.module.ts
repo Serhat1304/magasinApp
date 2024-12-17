@@ -26,6 +26,7 @@ import {DialogService} from "primeng/dynamicdialog";
 import {ProductService} from "./services/product.service";
 import {CreateProductComponent} from "./create-product/create-product.component";
 import { TableProductComponent } from './table-product/table-product.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { TableProductComponent } from './table-product/table-product.component';
     DropdownModule,
     PaginatorModule,
     ToastModule,
-    DialogModule
+    DialogModule,
+    NgOptimizedImage
   ],
   exports: [
     EuroCurrencyDirective
