@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../models/product.model';
 import { Category } from '../models/category.model';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {CategorieService} from "../services/categorie.service";
 
 @Component({
   selector: 'app-create-product',
@@ -19,7 +20,8 @@ export class CreateProductComponent implements OnInit {
     private fb: FormBuilder,
     private productService: ProductService,
     public dialogRef: DynamicDialogRef,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
+    private categorieService: CategorieService
   ) {
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -36,7 +38,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.productService.getCategories().subscribe({
+    this.categorieService.getCategories().subscribe({
       next: (data) => {
         this.categories = data;
       },

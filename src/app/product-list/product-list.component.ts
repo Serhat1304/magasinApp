@@ -9,6 +9,7 @@ import {ModifArticleComponent} from "../modif-article/modif-article.component";
 import { Category } from '../models/category.model';
 import { CreateProductComponent } from '../create-product/create-product.component';
 import {PrimeNGConfig} from "primeng/api";
+import {CategorieService} from "../services/categorie.service";
 
 @Component({
   selector: 'app-product-list',
@@ -31,7 +32,8 @@ export class ProductListComponent implements OnInit {
     private authService: AuthService,
     private storeService: StoreService,
     private dialogService: DialogService,
-    private primengConfig: PrimeNGConfig
+    private primengConfig: PrimeNGConfig,
+    private categorieService: CategorieService
   ) {}
 
   ngOnInit(): void {
@@ -90,7 +92,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.productService.getCategories().subscribe({
+    this.categorieService.getCategories().subscribe({
       next: (data) => {
         this.categories = data;
       },

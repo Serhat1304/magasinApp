@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Product } from "../models/product.model";
 import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
-import { ProductService } from "../services/product.service"; // Import ProductService
+import { ProductService } from "../services/product.service";
+import {CategorieService} from "../services/categorie.service"; // Import ProductService
 
 @Component({
   selector: 'app-modif-article',
@@ -18,7 +19,8 @@ export class ModifArticleComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    private productService: ProductService
+    private productService: ProductService,
+    private categorieService: CategorieService
   ) {
     this.product = config.data.product;
     this.articleForm = this.fb.group({
@@ -34,7 +36,7 @@ export class ModifArticleComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.productService.getCategories().subscribe({
+    this.categorieService.getCategories().subscribe({
       next: (data) => {
         this.categories = data;
       },
@@ -50,7 +52,11 @@ export class ModifArticleComponent implements OnInit {
         ...this.product,
         ...this.articleForm.value
       };
-      this.dialogRef.close(updatedProduct);
+      this.productService.updateProduct(updatedProduct.id, updatedProduct).subscribe({
+        next: (updateProduct: Product) => {
+          this.dialogRef.close(updatedProduct);
+        }
+      })
     } else {
       console.log('Formulaire invalide');
     }
