@@ -28,6 +28,7 @@ import {CreateProductComponent} from "./create-product/create-product.component"
 import { TableProductComponent } from './table-product/table-product.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ListMagasinsComponent } from './list-magasins/list-magasins.component';
+import { CustomDateFormatPipe } from './shared/pipe/custom-date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ListMagasinsComponent } from './list-magasins/list-magasins.component';
     ModifArticleComponent,
     CreateProductComponent,
     TableProductComponent,
-    ListMagasinsComponent
+    ListMagasinsComponent,
+    CustomDateFormatPipe
   ],
   imports: [
     BrowserModule,
