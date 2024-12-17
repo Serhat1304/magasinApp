@@ -1,13 +1,10 @@
 <header class="bg-blue-500 text-white shadow-md">
   <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <!-- Lien vers Accueil -->
     <div class="w-fit cursor-pointer">
         <img ngSrc="../../../assets/image/logo.png" routerLink="/home" class="h-[50px]" height="50" width="50" alt="logo"/>
     </div>
 
-    <!-- Liens de navigation -->
     <div class="flex space-x-4 items-center">
-      <!-- Connexion -->
       <a
         routerLink="/login"
         *ngIf="!isAuthenticated()"
@@ -15,7 +12,6 @@
         Connexion
       </a>
 
-      <!-- Créer un utilisateur -->
       <a
         class="btn-create bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
         routerLink="/register"
@@ -23,7 +19,6 @@
         Créer un utilisateur
       </a>
 
-      <!-- Déconnexion -->
       <button
         class="btn-logout bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
         *ngIf="isAuthenticated()"
