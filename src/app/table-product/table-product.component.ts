@@ -1,13 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModifArticleComponent} from "../modif-article/modif-article.component";
 import {Product} from "../models/product.model";
-import {ActivatedRoute} from "@angular/router";
-import {ProductService} from "../services/product.service";
-import {AuthService} from "../services/auth.service";
-import {StoreService} from "../services/store.service";
 import {DialogService} from "primeng/dynamicdialog";
-import {PrimeNGConfig} from "primeng/api";
-import {CategorieService} from "../services/categorie.service";
+import {MessageService, PrimeNGConfig} from "primeng/api";
 import {Category} from "../models/category.model";
 
 @Component({
@@ -25,9 +20,10 @@ export class TableProductComponent implements OnInit {
 
 
   constructor(
-              private dialogService: DialogService,
-              private primengConfig: PrimeNGConfig,
-              ) {
+    private dialogService: DialogService,
+    private primengConfig: PrimeNGConfig,
+    private messageService: MessageService
+  ) {
   }
 
   ngOnInit(): void {
@@ -64,15 +60,17 @@ export class TableProductComponent implements OnInit {
   editProduct(product: any): void {
     this.selectedProduct = product;
     const ref = this.dialogService.open(ModifArticleComponent, {
-      data: { product },
+      data: {product},
       header: 'Modifier l\'article',
       width: '50%',
     });
-    ref.onClose.subscribe((updatedProduct: Product) => {
-      if (updatedProduct) {
-        const index = this.product.findIndex(product => product.id === updatedProduct.id);
-        this.product.splice(index, 1);
-        this.product.push(updatedProduct);
+    ref.onClose.subscribe((result: { product: Product; message: string }) => {
+      if (result) {
+        const index = this.product.findIndex(product => product.id === result.product.id);
+        if (index !== -1) {
+          this.product[index] = result.product;
+        }
+        this.showSuccessMessage(result.message);
       }
     });
   }
@@ -81,5 +79,13 @@ export class TableProductComponent implements OnInit {
     const category = this.categories.find(cat => cat.id === categoryId);
     return category ? category.name : 'Unknown';
   }
+
+  showSuccessMessage(message: string): void {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Succès',
+      detail: message,
+      life: 3000
+    });  }
 
 }

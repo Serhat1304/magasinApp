@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Product } from "../models/product.model";
 import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
@@ -55,7 +55,10 @@ export class ModifArticleComponent implements OnInit {
       };
       this.productService.updateProduct(updatedProduct.id, updatedProduct).subscribe({
         next: (updateProduct: Product) => {
-          this.dialogRef.close(updatedProduct);
+          this.dialogRef.close({
+            product: updateProduct,
+            message: 'La mise à jour vient d\'être effectuée'
+          });
         }
       })
     } else {
