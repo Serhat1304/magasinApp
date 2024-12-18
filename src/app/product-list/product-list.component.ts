@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../services/product.service';
-import { AuthService } from '../services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProductService} from '../services/product.service';
+import {AuthService} from '../services/auth.service';
 import {StoreService} from "../services/store.service";
 import {Product} from "../models/product.model";
 import {DialogService} from "primeng/dynamicdialog";
-import {ModifArticleComponent} from "../modif-article/modif-article.component";
-import { Category } from '../models/category.model';
-import { CreateProductComponent } from '../create-product/create-product.component';
+import {Category} from '../models/category.model';
+import {CreateProductComponent} from '../create-product/create-product.component';
 import {PrimeNGConfig} from "primeng/api";
+import {CategorieService} from "../services/categorie.service";
+import {ListMagasinsComponent} from "../list-magasins/list-magasins.component";
 
 @Component({
   selector: 'app-product-list',
@@ -21,9 +22,8 @@ export class ProductListComponent implements OnInit {
   nameStore: String | undefined;
   products: any[] = [];
   currentUser: any = null;
-  selectedProduct: Product | null = null;
   categories: Category[] = [];
-  selectedCategoryId: string = '';
+  selectedStore: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,8 +31,10 @@ export class ProductListComponent implements OnInit {
     private authService: AuthService,
     private storeService: StoreService,
     private dialogService: DialogService,
-    private primengConfig: PrimeNGConfig
-  ) {}
+    private primengConfig: PrimeNGConfig,
+    private categorieService: CategorieService
+  ) {
+  }
 
   ngOnInit(): void {
     this.primengConfig.setTranslation({
@@ -69,33 +71,41 @@ export class ProductListComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
 
     if (this.storeId) {
-      this.storeService.getStoreById(this.storeId).subscribe({
-        next: (data) => {
-          this.nameStore = data.name;
-        },
-        error: (err) => {
-          console.error('Erreur lors du chargement des produits :', err);
-        }
-      });
-      this.productService.getProductsByStoreId(this.storeId).subscribe({
-        next: (data) => {
-          this.products = data;
-        },
-        error: (err) => {
-          console.error('Erreur lors du chargement des produits :', err);
-        }
-      });
+      this.getNameStore(this.storeId);
+      this.getProductStore(this.storeId);
     }
     this.loadCategories();
   }
 
   loadCategories(): void {
-    this.productService.getCategories().subscribe({
+    this.categorieService.getCategories().subscribe({
       next: (data) => {
         this.categories = data;
       },
       error: (err) => {
         console.error('Error fetching categories:', err);
+      }
+    });
+  }
+
+  getNameStore(storeId: string): void {
+    this.storeService.getStoreById(storeId).subscribe({
+      next: (data) => {
+        this.nameStore = data.name;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des produits :', err);
+      }
+    });
+  }
+
+  getProductStore(storeId: string): void {
+    this.productService.getProductsByStoreId(storeId).subscribe({
+      next: (data) => {
+        this.products = data;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des produits :', err);
       }
     });
   }
@@ -106,34 +116,30 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-  editProduct(product: any): void {
-    this.selectedProduct = product;
-    const ref = this.dialogService.open(ModifArticleComponent, {
-      data: { product },
-      header: 'Modifier l\'article',
-      width: '50%',
-    });
-    ref.onClose.subscribe((updatedProduct: Product) => {
-      if (updatedProduct) {
-        console.log('Produit modifié:', updatedProduct);
-      }
-    });
-  }
-
-  getCategoryName(categoryId: string): string {
-    const category = this.categories.find(cat => cat.id === categoryId);
-    return category ? category.name : 'Unknown';
-  }
-
   openCreateProductDialog(): void {
     const ref = this.dialogService.open(CreateProductComponent, {
       header: 'Créer un nouveau produit',
       width: '50%',
-      data: { storeId: this.storeId },
+      data: {storeId: this.storeId},
     });
     ref.onClose.subscribe((newProduct: Product) => {
       if (newProduct) {
         this.products.push(newProduct);
+      }
+    });
+  }
+
+  openChangeMagasin(): void {
+    const ref = this.dialogService.open(ListMagasinsComponent, {
+      header: 'Liste des magasins ',
+      width: '50%',
+      data: {isDialog: true},
+    });
+    ref.onClose.subscribe((store: any) => {
+      if (store) {
+        this.selectedStore = store;
+        this.getProductStore(store);
+        this.getNameStore(store);
       }
     });
   }

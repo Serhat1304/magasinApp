@@ -5,4 +5,5 @@ export interface Product {
   storeId: number;
   quantity: number;
   price: number;
+  modif: Date;
 }
