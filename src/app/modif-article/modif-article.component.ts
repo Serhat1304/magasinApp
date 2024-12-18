@@ -69,4 +69,8 @@ export class ModifArticleComponent implements OnInit {
   get formControls() {
     return this.articleForm.controls;
   }
+
+  onCancel(): void {
+    this.dialogRef.close();
+  }
 }

@@ -3,7 +3,7 @@
     Produits du magasin "<strong>{{ nameStore }}</strong>"
   </h2>
 
-  <div class="flex justify-between mb-5" *ngIf="canModify(storeId)">
+  <div class="flex justify-between mb-5">
     <button
       pButton
       type="button"
@@ -12,7 +12,7 @@
       (click)="openChangeMagasin()"
       class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 "
     ></button>
-  <button
+  <button *ngIf="canModify(storeId)"
     pButton
     type="button"
     label="Ajouter un produit"
