@@ -1,27 +1,75 @@
-# MagasinApp
+# Projet de Gestion de stocks de magasins
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.15.
+## Description
+Ce projet est une application intranet permettant de gérer les produits d'une base de données. Il offre les fonctionnalités suivantes :
 
-## Development server
+- Visualisation de la liste de produits de chaque magasins.
+- Modification et ajout des informations des produits via une interface utilisateur.
+- Utilisation d'une interface utilisateur moderne avec PrimeNG.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prérequis
+- Node.js (version 16 ou supérieure)
+- Angular CLI (version 16 ou supérieure)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clonez ce dépôt :
+   ```bash
+   git clone https://github.com/Serhat1304/magasinApp
+   ```
 
-## Build
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. Lancez le serveur de développement :
+   ```bash
+   npm start
+   ```
 
-## Running unit tests
+4. Lancez le serveur Backend :
+   ```bash
+   npm run start:server
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Accédez à l'application dans votre navigateur :
+   ```
+   http://localhost:4200
+   ```
 
-## Running end-to-end tests
+## Fonctionnalités
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Table des Produits (`TableProductComponent`)
+- Affiche une liste des produits avec leurs catégories.
+- Bouton pour modifier un produit (a conditions d'etre "admin" ou d'appartenir au magasins).
 
-## Further help
+### Modification des Produits (`ModifArticleComponent`)
+- Formulaire pour modifier le nom, la catégorie, le prix et la quantité.
+- Validation des champs :
+  - Nom : au moins 3 caractères.
+  - Prix : supérieur ou égal à 0.
+  - Quantité : supérieur ou égal à 1.
+- Affichage d'un toast de succès après mise à jour.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Notifications
+- Utilisation de `MessageService` de PrimeNG pour afficher les messages de succès.
+
+## Dépendances principales
+
+- Angular
+- PrimeNG
+- RxJS
+- TypeScript
+- Json serveur
+- Tailwind.css
+
+## Scripts utiles
+
+- `ng start` : Démarre le projet en mode développement.
+- `ng start:server` : Lance le serveur JSON pour la base de données.
+
+## Contributeurs
+- CREUX Damien
+- KUS Serhat
+- ROMAN Mathieu
