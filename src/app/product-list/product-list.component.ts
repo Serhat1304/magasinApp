@@ -132,7 +132,7 @@ export class ProductListComponent implements OnInit {
   openChangeMagasin(): void {
     const ref = this.dialogService.open(ListMagasinsComponent, {
       header: 'Liste des magasins ',
-      width: '50%',
+      width: '80%',
       data: {isDialog: true},
     });
     ref.onClose.subscribe((store: any) => {

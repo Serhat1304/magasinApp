@@ -29,6 +29,7 @@ import { TableProductComponent } from './table-product/table-product.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ListMagasinsComponent } from './list-magasins/list-magasins.component';
 import { CustomDateFormatPipe } from './shared/pipe/custom-date-format.pipe';
+import {MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -60,12 +61,13 @@ import { CustomDateFormatPipe } from './shared/pipe/custom-date-format.pipe';
     PaginatorModule,
     ToastModule,
     DialogModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    ToastModule
   ],
   exports: [
     EuroCurrencyDirective
   ],
-  providers: [DialogService, ProductService, DynamicDialogRef],
+  providers: [DialogService, ProductService, DynamicDialogRef, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
